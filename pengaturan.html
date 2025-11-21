@@ -1,0 +1,785 @@
+   <!DOCTYPE html>
+  <html lang="id">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Panduan NGL Spam - Lyontine Xcrushed</title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <style>
+        :root {
+          --bg: #000000;
+          --card: #1a1a1a;
+          --text: #ffffff;
+          --muted: #fff;
+          --primary: #ff0000;
+          --secondary: #AD4AE7;
+          --accent: #666666;
+        }
+        
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+          background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.1), transparent 30%),
+                     radial-gradient(circle at 80% 10%, rgba(255,255,255,.08), transparent 25%),
+                     radial-gradient(circle at 50% 90%, rgba(255,255,255,.05), transparent 30%),
+                     var(--bg);
+          color: var(--text);
+          min-height: 100vh;
+          overflow-x: hidden;
+          line-height: 1.6;
+        }
+        
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        
+        /* Server Status Banner */
+        .server-banner {
+          border-radius: 15px;
+          margin: 20px auto 30px;
+          position: relative;
+          overflow: hidden;
+          min-height: 200px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .banner-video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+        }
+
+        .server-banner::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+          z-index: 1;
+        }
+
+        .banner-content {
+          position: absolute;
+          bottom: 15px;
+          left: 25px;
+          z-index: 2;
+          text-align: left;
+        }
+
+        .banner-title {
+          font-family: 'Orbitron', sans-serif;
+          font-size: 20px;
+          font-weight: 800;
+          color: #fff;
+          margin-bottom: 5px;
+          text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .banner-subtitle {
+          font-size: 13px;
+          color: var(--text);
+          opacity: 0.9;
+          margin-bottom: 3px;
+        }
+
+        .banner-time {
+          color: #ffff;
+          font-size: 12px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .status-indicator {
+          position: absolute;
+          bottom: 15px;
+          right: 25px;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #00ff00;
+          font-size: 13px;
+          font-weight: 600;
+          background: rgba(0,0,0,0.4);
+          padding: 8px 16px;
+          border-radius: 25px;
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(0,255,0,0.3);
+        }
+
+        .status-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #00ff00;
+          box-shadow: 0 0 10px #00ff00;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { 
+            opacity: 1; 
+            box-shadow: 0 0 0 0 rgba(0,255,0,0.7);
+          }
+          70% { 
+            opacity: 0.7; 
+            box-shadow: 0 0 0 10px rgba(0,255,0,0);
+          }
+          100% { 
+            opacity: 1; 
+            box-shadow: 0 0 0 0 rgba(0,255,0,0);
+          }
+        }
+
+        /* Header */
+        .guide-header {
+          text-align: center;
+          margin-bottom: 40px;
+          padding: 40px 20px;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(15px);
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 18px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .guide-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          border-radius: 18px 18px 0 0;
+        }
+
+        .guide-header h1 {
+          font-family: 'Orbitron', sans-serif;
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #fff;
+          margin-bottom: 15px;
+          text-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .guide-header p {
+          color: #a0a0c0;
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+        }
+
+        .user-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 12px 24px;
+          border-radius: 50px;
+          border: 1px solid rgba(255,255,255,0.2);
+          backdrop-filter: blur(10px);
+          font-weight: 600;
+        }
+
+        /* Layout */
+        .guide-grid {
+          display: grid;
+          grid-template-columns: 1fr 350px;
+          gap: 30px;
+          margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+          .guide-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+        
+        .main-content {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+        
+        .sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+
+        /* Cards */
+        .card {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(15px);
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 18px;
+          padding: 28px;
+          position: relative;
+          overflow: hidden;
+          animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          border-radius: 18px 18px 0 0;
+        }
+
+        .card-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 20px;
+        }
+
+        .card-header i {
+          font-size: 1.5rem;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .card-header h2 {
+          font-family: 'Orbitron', sans-serif;
+          font-size: 22px;
+          font-weight: 700;
+          color: #fff;
+          text-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        /* Steps */
+        .step {
+          display: flex;
+          gap: 15px;
+          margin-bottom: 25px;
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .step-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          color: white;
+          border-radius: 50%;
+          font-weight: 600;
+          flex-shrink: 0;
+        }
+
+        .step-content h3 {
+          color: white;
+          margin-bottom: 10px;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        /* Buttons - Updated to match iPhone Quote Generator */
+        .btn-group {
+          display: flex;
+          gap: 15px;
+          margin-top: 30px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 15px 30px;
+          border-radius: 12px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          color: white;
+          box-shadow: 0 5px 15px rgba(123, 92, 245, 0.4);
+          letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(123, 92, 245, 0.6);
+        }
+
+        .btn:active {
+          transform: translateY(1px);
+        }
+
+        .btn-secondary {
+          background: rgba(255, 255, 255, 0.1);
+          color: var(--text);
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Quick Links */
+        .quick-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .quick-link {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 15px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          text-decoration: none;
+          color: var(--text);
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .quick-link:hover {
+          background: rgba(255, 255, 255, 0.1);
+          transform: translateX(5px);
+        }
+
+        /* Status Indicators */
+        .status-indicators {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .status-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 16px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .status-dot-small {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #00ff00;
+        }
+
+        .status-active {
+          background: rgba(0, 255, 0, 0.1);
+          border-color: rgba(0, 255, 0, 0.3);
+        }
+
+        .status-warning {
+          background: rgba(255, 153, 0, 0.1);
+          border-color: rgba(255, 153, 0, 0.3);
+        }
+
+        /* Content Boxes */
+        .highlight-box {
+          background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(76, 201, 240, 0.1));
+          border: 1px solid rgba(157, 78, 221, 0.3);
+          padding: 20px;
+          border-radius: 12px;
+          margin: 15px 0;
+        }
+
+        .warning-box {
+          background: rgba(255, 0, 0, 0.1);
+          border-left: 4px solid var(--primary);
+          padding: 15px;
+          border-radius: 8px;
+          margin: 20px 0;
+        }
+
+        .warning-box p {
+          margin: 0;
+          color: #ff9999;
+          font-size: 14px;
+        }
+
+        .note-box {
+          background: rgba(173, 74, 231, 0.1);
+          border-left: 4px solid #FFF900;
+          padding: 15px;
+          border-radius: 8px;
+          margin: 20px 0;
+        }
+
+        .note-box p {
+          margin: 0;
+          color: #F9F444;
+          font-size: 14px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 15px;
+          margin: 20px 0;
+        }
+
+        .stat-item {
+          text-align: center;
+          padding: 15px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-value {
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-bottom: 5px;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        /* Tags */
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 15px;
+        }
+
+        .tag {
+          display: inline-block;
+          padding: 6px 12px;
+          background: rgba(76, 201, 240, 0.2);
+          color: var(--muted);
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 500;
+          border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .guide-header h1 {
+            font-size: 2rem;
+          }
+          
+          .guide-header p {
+            font-size: 1rem;
+          }
+          
+          .btn {
+            padding: 12px 20px;
+            font-size: 14px;
+          }
+          
+          .card {
+            padding: 20px;
+          }
+        }
+      </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Server Status Banner -->
+      <div class="server-banner">
+        <video class="banner-video" autoplay muted loop playsinline>
+          <source src="https://l.top4top.io/m_35907o1o00.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="banner-content">
+          <div class="banner-title">Lyontine Xcrushed</div>
+          <div class="banner-time">
+            <i class="fas fa-clock"></i>
+            <span id="currentTime">Loading...</span>
+          </div>
+        </div>
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span>Online</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="guide-header">
+        <h1><i class="fas fa-graduation-cap"></i> Panduan Lengkap</h1>
+        <p>Pelajari cara menggunakan NGL Spam Tool dengan efektif dan aman</p>
+        <div class="user-badge">
+          <i class="fas fa-user-circle"></i>
+          <span>Selamat datang, <strong>Di Pengaturan Ngl</strong></span>
+        </div>
+      </div>
+      
+      <div class="guide-grid">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+          <!-- INTRODUCTION -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-rocket"></i>
+              <h2>Apa itu NGL Spam Tool?</h2>
+            </div>
+            <p>NGL Spam Tool adalah solusi canggih untuk mengirim pesan anonymous ke akun NGL.link secara otomatis dengan sistem keamanan terintegrasi.</p>
+            
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value"></div>
+                <div></div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">3-8s</div>
+                <div>Delay/Pesan</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100</div>
+                <div>Max/Request</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100</div>
+                <div>Limit/Target</div>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <i class="fas fa-shield-alt"></i>
+              <strong> Sistem Keamanan:</strong>
+              <p>Tool ini dilengkapi dengan multiple layer protection untuk mencegah deteksi:</p><br>
+              <ul>
+                <li><strong>Auto Delay</strong> - Random delay 3-8 detik antar pesan</li>
+                <li><strong>Rate Limiting</strong> - Kontrol penggunaan per user dan target</li>
+                <li><strong>User Agent Rotation</strong> - Berganti device signature otomatis</li>
+                <li><strong>Daily Limits</strong> - Batasan harian untuk mencegah abuse</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- QUICK START -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-play-circle"></i>
+              <h2>Panduan Cepat</h2>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Buka NGL Spam Tool</h3>
+                <p>Klik menu <strong>"NGL Spam"</strong> di dashboard atau akses langsung di sini</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Isi Form Pengiriman</h3>
+                <p>Masukkan username target (tanpa @)<br> misal <b>https://ngl.link/agus</b><br>ambil bagian nama <b>agus</b><br>masukin pesannya dan jumlah pengiriman (1-100)</p>
+                <div class="highlight-box">
+                  <strong>Contoh:</strong><br>
+                  Username: <code>agus</code><br>
+                  Pesan: <code>"lu idiot bangsat"</code><br>
+                  Jumlah: <code>25</code>
+                </div>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Periksa Limit & Mulai Pengiriman</h3>
+                <p>Pastikan sisa limit mencukupi, lalu klik tombol <strong>"🚀 Mulai Spam"</strong></p>
+                <div class="warning-box">
+                  <p><i class="fas fa-exclamation-triangle"></i> <strong>Peringatan:</strong> Jangan tutup halaman</strong> selama proses berjalan!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              <p><i class="fas fa-lightbulb"></i> <strong>Tips:</strong> Untuk hasil terbaik, kirim 40-50 pesan per session dengan jeda 1-2 jam antar session.</p>
+            </div>
+          </div>
+
+          <!-- LIMIT SYSTEM -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-chart-bar"></i>
+              <h2>Sistem Limit & Batasan</h2>
+            </div>
+            
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value">200</div>
+                <div>Per User/Hari</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100</div>
+                <div>Per Target/Hari</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100</div>
+                <div>Per Request</div>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <p><i class="fa-solid fa-circle-info"></i>
+              <strong> Informasi Reset:</strong><br>
+              Semua limit akan direset otomatis setiap hari pada pukul 00:00 WIB. Pastikan untuk memantau penggunaan harian Anda.</p>
+            </div>
+
+            <div class="warning-box">
+              <p><i class="fas fa-exclamation-triangle"></i>
+                <strong>Penting!</strong> Melebihi limit akan menyebabkan error dan mungkin pembatasan akses sementara.
+                </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+          <!-- QUICK ACTIONS -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-bolt"></i>
+              <h2>Akses Cepat</h2>
+            </div>
+            <div class="quick-links">
+              <a href="nglspam.html" class="quick-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>Mulai Spam</span>
+              </a>
+              <a href="index.html" class="quick-link">
+                <i class="fas fa-home"></i>
+                <span>Kembali ke Dashboard</span>
+              </a>
+              <a href="https://wa.me/6281260512743?text=bang+fitur+ngl+error" class="quick-link">
+                <i class="fas fa-chart-pie"></i>
+                <span>Laporkan Bug</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- STATUS -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-info-circle"></i>
+              <h2>Status Sistem</h2>
+            </div>
+            <div class="status-indicators">
+              <div class="status-item status-active">
+                <div class="status-dot-small"></div>
+                <span>Sistem Aktif</span>
+              </div>
+              <div class="status-item status-active">
+                <div class="status-dot-small"></div>
+                <span>Keamanan Optimal</span>
+              </div>
+              <div class="status-item status-warning">
+                <div class="status-dot-small" style="background: #ff9900;"></div>
+                <span>Reset: 00:00 WIB</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- TIPS -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-lightbulb"></i>
+              <h2>Tips Penting</h2>
+            </div>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+              <li>Gunakan pesan yang positif dan konstruktif</li>
+              <li>Jangan spam target yang sama berulang kali</li>
+              <li>Pastikan koneksi internet stabil</li>
+              <li>Pantau progress di log real-time</li>
+              <li>Hormati privasi dan batasan orang lain</li>
+            </ul>
+          </div>
+          
+          <!-- TAGS -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-tags"></i>
+              <h2>Fitur Utama</h2>
+            </div>
+            <div class="tags">
+              <span class="tag">Auto Delay</span>
+              <span class="tag">Rate Limiting</span>
+              <span class="tag">User Agent Rotation</span>
+              <span class="tag">Real-time Logs</span>
+              <span class="tag">Progress Tracking</span>
+              <span class="tag">Secure API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ACTION BUTTONS -->
+      <div class="btn-group">
+        <a href="nglspam.html" class="btn">
+          <i class="fas fa-rocket"></i>
+          Mulai Gunakan Tool
+        </a>
+        <a href="index.html" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i>
+          Kembali ke Dashboard
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Update current time
+      function updateCurrentTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('id-ID', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+        document.getElementById('currentTime').textContent = timeString;
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCurrentTime();
+        
+        // Update time every second
+        setInterval(updateCurrentTime, 1000);
+      });
+    </script>
+  </body>
+    </html>
